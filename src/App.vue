@@ -1,15 +1,14 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <MagicChat />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MagicChat from './components/MagicChat.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MagicChat
   }
 }
 </script>

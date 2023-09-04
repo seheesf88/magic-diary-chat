@@ -1,4 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+const app = createApp(App);
+
+app.config.globalProperties.$apiKey = process.env.VUE_APP_API_KEY;
+app.mount('#app')
