@@ -1,8 +1,17 @@
 <template>
-  <div>
-    <input v-model="userMessage" placeholder="Ask a question..." />
-    <button @click="sendMessage">Send</button>
-    <p>{{ response }}</p>
+  <div class="diary">
+    <div>
+      <div v-if="isLoading">
+        <p>{{ response }}</p>
+      </div>
+      <div v-else-if="!isLoading && !isAsking">
+        <p>{{ response }}</p>
+      </div>
+      <div v-else-if="!isLoading && isAsking">
+        <input v-model="userMessage" class="diary__input" placeholder="Ask a question..." />
+        <button class="diary__button" @click="sendMessage">Send</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -12,11 +21,14 @@ export default {
     return {
       userMessage: "",
       response: "",
+      isLoading: false,
+      isAsking: true
     };
   },
   methods: {
     async sendMessage() {
       try {
+        this.isLoading = true
         const response = await fetch("http://localhost:3000/ask-openai", {
           method: "POST",
           headers: {
@@ -30,6 +42,7 @@ export default {
         if (response.ok) {
           const data = await response.json();
           this.response = data.openaiResponse;
+          this.isLoading = false
         } else {
           console.error("Error from backend:", response.statusText);
         }
@@ -41,6 +54,23 @@ export default {
 };
 </script>
 
-<style scoped>
-/* Add your CSS styles here */
+<style scoped lang="scss">
+.diary {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__input  {
+    border: none;
+    background-color: inherit;
+    font-size: 40px;
+  }
+
+  &__button {
+    border: none;
+    background-color: inherit;
+    font-size: 40px;
+  }
+}
 </style>
