@@ -1,15 +1,18 @@
 <template>
   <div class="diary">
-    <div>
-      <div v-if="isLoading">
-        <p>{{ response }}</p>
+    <div v-if="!greeting" class="d-flex flex-column justify-content-center align-items-center">
+      <p class="h1">Hi, Nice to meet you. I am Tom. What do you know about wizard world</p>
+      <div class="d-flex justify-content-center" @click="startChat">
+        <img class="diary__pen" src="../assets/pen.png"/>
       </div>
-      <div v-else-if="!isLoading && !isAsking">
+    </div>
+    <div v-else>
+      <div v-if="!isAsking">
         <p>{{ response }}</p>
       </div>
       <div v-else-if="!isLoading && isAsking">
-        <input v-model="userMessage" class="diary__input" placeholder="Ask a question..." />
-        <button class="diary__button" @click="sendMessage">Send</button>
+        <input v-model="userMessage" class="diary__input" placeholder="Write a question...here" />
+        <button class="diary__button" @click="sendMessage">Ask</button>
       </div>
     </div>
   </div>
@@ -21,11 +24,15 @@ export default {
     return {
       userMessage: "",
       response: "",
+      greeting: true,
       isLoading: false,
       isAsking: true
     };
   },
   methods: {
+    startChat() {
+      this.greeting = false;
+    },
     async sendMessage() {
       try {
         this.isLoading = true
@@ -61,10 +68,19 @@ export default {
   justify-content: center;
   align-items: center;
 
+  &__pen {
+    width: 40%;
+  }
+
   &__input  {
     border: none;
     background-color: inherit;
     font-size: 40px;
+
+    &:focus {
+      outline: none;
+      border: none;
+    }
   }
 
   &__button {
@@ -73,4 +89,5 @@ export default {
     font-size: 40px;
   }
 }
+
 </style>
