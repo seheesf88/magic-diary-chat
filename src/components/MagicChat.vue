@@ -8,7 +8,7 @@
     </div>
     <div v-else class="diary__chat">
       <div v-if="showResponse" class="diary__chat-response">
-        <p>{{ response }}</p>
+        <p class="fade-in">{{ response }}</p>
         <button @click="backToQuestion" class="diary__chat-back-btn">Ask another question</button>
       </div>
       <div v-else>
@@ -70,7 +70,7 @@ export default {
           setTimeout(() => {
             this.showResponse = true;
           }, 3000);
-          
+
           this.isLoading = false
         } else {
           console.error("Error from backend:", response.statusText);
@@ -155,6 +155,19 @@ export default {
     border: 3px solid;
     padding: 0.25em 0.5em;
     box-shadow: 1px 1px 0px 0px, 2px 2px 0px 0px, 3px 3px 0px 0px, 4px 4px 0px 0px, 5px 5px 0px 0px;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
