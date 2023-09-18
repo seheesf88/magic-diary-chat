@@ -26,6 +26,7 @@
 export default {
   data() {
     return {
+      apiUrl: process.env.VUE_APP_API_URL,
       userMessage: "",
       sentMessage: "",
       response: "",
@@ -52,7 +53,7 @@ export default {
         this.isLoading = true
         this.sentMessage = this.userMessage
 
-        const response = await fetch("https://magic-diary-be.onrender.com/ask-openai", {
+        const response = await fetch(this.apiUrl, {
           method: "POST",
           headers: {
             'Content-Type': 'application/json',
