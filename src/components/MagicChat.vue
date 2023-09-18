@@ -1,7 +1,7 @@
 <template>
   <div class="diary">
     <div v-if="greeting" class="diary__greeting">
-      <p>Hi, Nice to meet you. I am Tom. What do you know about wizard world</p>
+      <p>Hi, nice to meet you. I'm Tom. What do you know about the wizarding world?</p>
       <div class="d-flex justify-content-center" @click="startChat">
         <img class="diary__pen" src="../assets/pen.png"/>
       </div>
