@@ -53,7 +53,7 @@ export default {
         this.isLoading = true
         this.sentMessage = this.userMessage
 
-        const response = await fetch(this.apiUrl, {
+        const response = await fetch("https://magic-diary-be.onrender.com/ask-openai", {
           method: "POST",
           headers: {
             'Content-Type': 'application/json',
