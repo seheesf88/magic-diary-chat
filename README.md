@@ -4,7 +4,10 @@
 
 Tom Riddle's Diary is a unique and immersive chat application inspired by the character Tom Riddle from the Harry Potter series, specifically from "Harry Potter and the Chamber of Secrets." This chat app features a chatbot named Tom Riddle, who is known for his cold and arrogant demeanor. Tom is trained to respond using magical world vocabularies and may show little interest in the non-magical world (also known as the muggle world). 
 
-The project utilizes several technologies, including Vue.js for the frontend, Node.js and Express.js for the backend, and leverages OpenAI's fine-tuning capabilities to bring the character of Tom Riddle to life in the chatbot.
+## Tech stacks
+
+Vue.js, Sass, bootstrap
+Node.js, Express.js, OpenAi(Fine tuning)
 
 ## Features
 
