@@ -12,7 +12,8 @@
         <button @click="backToQuestion" class="diary__chat-back-btn">Ask another question</button>
       </div>
       <div v-else>
-        <p v-if="sentMessage" class="diary__chat-sent">{{ sentMessage }}</p>
+        <p v-if="isLoading">Thinking...</p>
+        <p v-else-if="sentMessage" class="diary__chat-sent">{{ sentMessage }}</p>
         <div v-else class="diary__chat-question">
           <input v-model="userMessage" class="diary__input" placeholder="Write a question...here" />
           <button v-show="isInputNotEmpty" class="diary__button" @click="sendMessage">Ask</button>
@@ -70,9 +71,9 @@ export default {
 
           setTimeout(() => {
             this.showResponse = true;
+            this.isLoading = false
           }, 3000);
 
-          this.isLoading = false
         } else {
           console.error("Error from backend:", response.statusText);
         }
