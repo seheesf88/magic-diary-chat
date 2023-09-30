@@ -1,15 +1,25 @@
 <template>
-  <MagicChat />
+  <ul class="nav">
+    <li class="nav-item">
+      <router-link :to="{ name: 'MagicChat'}" class="nav-link active">
+        MagicChat
+      </router-link>
+    </li>
+    <li class="nav-item">
+      <router-link :to="{ name: 'CreateApi'}" class="nav-link active">
+        Make my api
+      </router-link>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="wwww.seheeson.com">about sehee</a>
+    </li>
+  </ul>
+  <router-view />
 </template>
 
 <script>
-import MagicChat from './components/MagicChat.vue'
-
 export default {
-  name: 'App',
-  components: {
-    MagicChat
-  }
+  name: 'App'
 }
 </script>
 

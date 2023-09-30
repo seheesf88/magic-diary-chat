@@ -25,6 +25,7 @@
 
 <script>
 export default {
+  name: "MagicChat",
   data() {
     return {
       apiUrl: process.env.VUE_APP_API_URL,
